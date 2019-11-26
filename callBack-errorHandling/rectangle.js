@@ -8,7 +8,6 @@ module.exports=(x,y,callback)=>{
         },2000);
     }
     else{
-
         setTimeout(()=>{ 
             callback(null,{
                 perimeter:()=>(2*(x+y)),
@@ -18,3 +17,5 @@ module.exports=(x,y,callback)=>{
 
     }
 }
+
+
