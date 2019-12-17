@@ -48,7 +48,7 @@ app.post('/new_contact', function(req,res){
             res.end("error creating contact");
             return
         }
-        res.send("contact created successfully")
+        res.send("contact created successfully")   
     })
 });
 
