@@ -1,0 +1,45 @@
+extends layout   
+
+block content
+    .main.container
+        h2 Phone Directory
+        .row
+            .col-md-3.col-md-offset-3
+                h5  Add new Contacts
+                form(method="POST", action='/new_contact')
+                    div.form-group
+                        p Name:
+                        input#title(type="text",name="name")
+                    div.form-group    
+                        p Phone No.:
+                        input#title(type="text",name="phone")
+                    div.form-group    
+                        p: button(type="submit") Add new Contact
+            .col-md-3.col-md-offset-3    
+                h5 Add new  Database 
+                form(method="POST" action='/createdb')
+                    div.form-group
+                        p Database name:
+                        input#title(type="text" name="dbname")
+                    div.form-group    
+                        p: button(type="submit") Add new Database 
+            .col-md-3.col-md-offset-3
+                h5 Delete contact
+                form(method="POST" action='/delete_contact')
+                    div.form-group
+                        p Phone Number:
+                        input#title(type="text" name="phone")
+                    div.form-group    
+                        p: button(type="submit") Delete contact 
+            .col-md-3.col-md-offset-3
+                h5  Search contact
+                form(method="POST" action='/view_contact')
+                    div.form-group
+                        p Phone Number:
+                        input#title(type="text" name="phone")
+                    div.form-group    
+                        p: button(type="submit") Search the contact     
+
+
+
+                
