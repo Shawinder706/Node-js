@@ -1,5 +1,5 @@
-const express=require('express');
-const routes=require('./routes');
+const express=require('express');  // import express 
+const routes=require('./routes');  // import local modules 
 const http=require('http');
 const path=require('path');
 const urlEncoded=require('url');
@@ -38,8 +38,6 @@ app.post('/createdb',function(req,res){
 
 });
 
-
-
 app.post('/new_contact', function(req,res){
     let name = req.body.name
     let phone= req.body.phone
@@ -51,7 +49,6 @@ app.post('/new_contact', function(req,res){
         res.send("contact created successfully")   
     })
 });
-
 
 app.post('/view_contact',function(req,res){
     var alldoc='following are the contacts'
@@ -82,7 +79,6 @@ app.post('/delete_contact',function(req,res){
         }
     })
 })
-
 
 http.createServer(app).listen(app.get('port'),function(){
     console.log(`express server is listening on port ${app.get('port')}`);
