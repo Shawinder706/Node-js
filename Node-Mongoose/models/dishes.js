@@ -1,8 +1,25 @@
-const mongoose = require('mongoose')
-const assert = require('mongoose-assert')
+const mongoose = require('mongoose') // install mongoose from cmd using npm 
 
 const Schema = mongoose.Schema
 
+var commentSchema   =   new Schema({
+    rating :{ Number,
+    min : 1,
+    max:5,
+    required:true    
+    },
+    comment:{
+        type:String,
+        required:true    
+    },
+    author:{
+        type:String,
+        required:true
+    }
+},
+{
+    timestamps:true
+})
 
 const dishSchema = new Schema({
     name: {
@@ -14,15 +31,7 @@ const dishSchema = new Schema({
         type: String,
         required: true        
     },
-    email:{
-        type:String,
-        required:true
-    },
-    pass:{
-        type:String,
-        required:true,
-        minlength:7        
-    }
+    comments:[commentSchema]
 
 },
     {
@@ -32,12 +41,6 @@ const dishSchema = new Schema({
 
 
 var Dishes = mongoose.model('Dish', dishSchema);
-
-// user.path('name').validate(function (name) {
-
-//     // Your validation code here, should return bool
-  
-//   }, 'Some error message');
 module.exports = Dishes;
 
 
