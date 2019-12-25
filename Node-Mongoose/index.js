@@ -15,8 +15,8 @@ connect.then((db) => {
     newDish.save()
         .then((dish)=>{
             console.log(`save ${dish}`)
-           // return Dishes.find({});
-        });
+            return Dishes.find({});
+        })
         .then((dishes)=>{
             console.log(`remove ${dishes}`)
             return Dishes.remove({});
