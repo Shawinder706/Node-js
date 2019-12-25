@@ -153,7 +153,7 @@ dishRouter.route('/:dishId/comments')
         },(err)=>next(err))
         .catch((err)=>next(err))
 })
-
+// comment id routes
 dishRouter.route(':/dishId/comments/:commentId')
 .get((res,req,next)=>{
     Dishes.findById(req.params.dishId)
@@ -172,7 +172,7 @@ dishRouter.route(':/dishId/comments/:commentId')
                 err=new Error(`comment ${req.params.commentId} not found`)
                 err.status=404
                 return next(err)
-            }
+            }  
         }, (err)=>next(err))
         .catch((err)=>next(err))
 })
