@@ -7,17 +7,31 @@ connect.then((db) => {
 
     console.log('Connected correctly to server');
 
-    Dishes.create({
-        name:"Ravi singh",
-        description:"I am working at somewhere in mohali"
+    Dishes.create({  // use create method instead save 
+        name:"sharma45",
+        description:"I am working at somewhere in delhi"
     })
     .then((dish)=>{
         console.log(`find documents ${dish}`)
-        return Dishes.find({}).exec()  // exec() for execute the query
+        return Dishes.findByIdAndUpdate(dish._id,{
+            $set:{description:"I am working at somewhere in chandigarh"}
+        },{
+            new: true  // false during updation make it true by defining
+        })
+        .exec();  
     })
-    .then((dishes)=>{
-        console.log(`remove dishes ${dishes}`)
-        return Dishes.remove({});
+    .then((dish)=>{
+        console.log(`push ${dish}`)
+        dish.comments.push({
+            rating:5,
+            comment: "I am getting a sinking feeling!  ",
+            author: "leonardo di carpaccio"
+        })
+        return dish.save()
+    })
+    .then((dish)=>{
+        console.log(dish)
+        return Dishes.remove({})
     })
     .then(()=>{
         return mongoose.connection.close()
