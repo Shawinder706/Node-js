@@ -7,7 +7,6 @@ leaderRouter.use(bodyParser.json());
 
 leaderRouter.route('/')
 
-
 .all((req, res, next)=>{
     res.statuscode=200;
     res.setHeader('content-type','text/html');
