@@ -41,8 +41,9 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
 
-
+// basic authentication 
 function auth (req, res, next) {
+  console.log("**********************Headers**********************")
     console.log(req.headers);
     var authHeader = req.headers.authorization;
     if (!authHeader) {
@@ -53,7 +54,9 @@ function auth (req, res, next) {
       return;
     }
     var auth = new Buffer.from(authHeader.split(' ')[1],'base64').toString().split(':');
-    var user = auth[0];
+      
+    // Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==
+    var user = auth[0];  //
     var pass = auth[1];
     if (user == 'admin' && pass == 'password') {
       next(); // authorized
